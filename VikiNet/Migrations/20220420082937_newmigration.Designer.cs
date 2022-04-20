@@ -10,8 +10,8 @@ using VikiNet.Entity;
 namespace VikiNet.Migrations
 {
     [DbContext(typeof(VikiNetDbContext))]
-    [Migration("20220419202540_migrationeklendi")]
-    partial class migrationeklendi
+    [Migration("20220420082937_newmigration")]
+    partial class newmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

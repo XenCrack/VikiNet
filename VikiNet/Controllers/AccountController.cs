@@ -46,7 +46,7 @@ namespace VikiNet.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Movies");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
 
@@ -59,7 +59,7 @@ namespace VikiNet.Controllers
 
             return View(model);
         }
-
+        
         public IActionResult Register() => View(new RegisterViewModel());
 
         [HttpPost]
@@ -97,7 +97,7 @@ namespace VikiNet.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Index", "Movies");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AccessDenied(string returnUrl)

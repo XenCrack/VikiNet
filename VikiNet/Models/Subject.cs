@@ -28,5 +28,7 @@ namespace VikiNet.Models
         public DateTime? ModifiedDate { get; set; }
 
         
+
+
     }
 }

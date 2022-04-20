@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VikiNet.Models;
 
 namespace VikiNet
 {
@@ -30,7 +31,7 @@ namespace VikiNet
                 options.UseSqlServer(Configuration.GetConnectionString("localdb"))
             );
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<VikiNetDbContext>();
@@ -45,6 +46,8 @@ namespace VikiNet
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
+            
+                
 
             services.AddSession(option =>
             {
