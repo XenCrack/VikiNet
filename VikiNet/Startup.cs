@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VikiNet.Models;
+using VikiNet.Data.Concrete;
+using VikiNet.Data.Abstract;
 
 namespace VikiNet
 {
@@ -30,6 +32,8 @@ namespace VikiNet
             services.AddDbContext<VikiNetDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("localdb"))
             );
+
+            services.AddScoped<ISubjectService, SubjectService>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultTokenProviders()

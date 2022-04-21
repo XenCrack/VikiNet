@@ -21,9 +21,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\Abstract\" />
-    <Folder Include="Data\Concrete\" />
-  </ItemGroup>
-
 </Project>

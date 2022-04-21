@@ -7,13 +7,14 @@ namespace VikiNet.Models
 {
     public class SubjectType 
     {
-        [Key]
-        public int Id { get; set; }
+        
         
         [Required]
         [Column("SubjectType", TypeName = "varchar(50)")]
         [StringLength(50)]
         public string SubjectTypeName{ get; set; }
+
+        public List<Subject> Subjects { get; set; }
 
         
 
