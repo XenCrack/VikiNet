@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using VikiNet.Models;
 using VikiNet.Data.Concrete;
 using VikiNet.Data.Abstract;
+using Microsoft.AspNetCore.Http;
 
 namespace VikiNet
 {
@@ -30,10 +31,11 @@ namespace VikiNet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<VikiNetDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("localdb"))
-            );
+                options.UseSqlServer(Configuration.GetConnectionString("default")));
 
             services.AddScoped<ISubjectService, SubjectService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultTokenProviders()
@@ -50,6 +52,7 @@ namespace VikiNet
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
+            
             
                 
 

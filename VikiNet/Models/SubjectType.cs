@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using VikiNet.Data.Base;
 
 namespace VikiNet.Models
 {
-    public class SubjectType 
+    public class SubjectType : EntityBase
     {
         
         

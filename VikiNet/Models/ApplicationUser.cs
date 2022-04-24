@@ -6,8 +6,9 @@ namespace VikiNet.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [Key]
-        public int Id { get; set; }
+        
+        
+
 
         [Display(Name = "Ad")]
         public string Name { get; set; }

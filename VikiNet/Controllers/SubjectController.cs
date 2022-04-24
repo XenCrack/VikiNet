@@ -7,6 +7,7 @@ using VikiNet.Data.ViewModels;
 
 namespace VikiNet.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class SubjectController : Controller
     {
         private readonly ISubjectService _service;
@@ -23,20 +24,23 @@ namespace VikiNet.Controllers
             return View(subject);
         }
 
-        //[AllowAnonymous]
-        //public async Task<IActionResult> Create()
-        //{
-        //    var dropdown = await _service.GetMovieDropdownValues();
+        [AllowAnonymous]
+        public async Task<IActionResult> Create()
+        {
+            var dropdown = await _service.GetSubjectDropdownValues();
 
+            ViewBag.Subjects = new SelectList(dropdown.Subjects, "Id", "Name");
 
-        //}
+            return View();
+        
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(SubjectViewModel model)
         {
             if(!ModelState.IsValid)
             {
-                var dropdown = await _service.GetMovieDropdownValues();
+                var dropdown = await _service.GetSubjectDropdownValues();
 
                 ViewBag.Subjects = new SelectList(dropdown.Subjects, "Id", "Name");
                 

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using VikiNet.Data.Base;
 
 namespace VikiNet.Models
 {
-    public class Subject 
+    public class Subject : EntityBase
     {
-        [Key]
-        public int Id { get; set; }
+        
 
         [Required(ErrorMessage ="Konu başlığı boş bırakılamaz")]
         [Column("Name", TypeName = "varchar(50)")]

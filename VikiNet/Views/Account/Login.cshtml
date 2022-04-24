@@ -4,47 +4,52 @@
     <div class="container">
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          
-          <div class="col-10 text-center">
-            <a class="blog-header-logo text-dark"  href="#"><h1> VikiLog</h1></a>
+          <div class="col-4 pt-1">
+            <a class="link-secondary" href="#"></a>
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="/Home/Index"> <h1> <strong>VikiNet</strong></h1></a>
           </div>
           <div class="col-2 d-flex justify-content-end align-items-center">
-            <a class="text-muted" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-            </a>
-            <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+            <a class="btn btn-sm btn-outline-secondary" href="/Account/Login">Giriş Yap</a>
+          </div>
+          <div class="col-l-2 d-flex justify-content-end align-items-center">
+            <a class="btn btn-sm btn-outline-secondary" href="/Account/Register">Kayıt Ol</a>
           </div>
         </div>
       </header>
-
+          
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="#">World</a>
-            <a class="p-2 link-secondary" href="#">U.S.</a>
-            <a class="p-2 link-secondary" href="#">Technology</a>
-            <a class="p-2 link-secondary" href="#">Design</a>
-            <a class="p-2 link-secondary" href="#">Culture</a>
-            <a class="p-2 link-secondary" href="#">Business</a>
-            <a class="p-2 link-secondary" href="#">Politics</a>
-            <a class="p-2 link-secondary" href="#">Opinion</a>
-            <a class="p-2 link-secondary" href="#">Science</a>
-            <a class="p-2 link-secondary" href="#">Health</a>
-            <a class="p-2 link-secondary" href="#">Style</a>
-            <a class="p-2 link-secondary" href="#">Travel</a>
+          <a class="p-2 link-secondary" href="/Title/Tarih"><h4>Tarih</h4></a>
+          <a class="p-2 link-secondary" href="/Title/Din"><h4>Din</h4></a>
+          <a class="p-2 link-secondary" href="/Title/Edebiyat"><h4>Edebiyat</h4></a>
+          <a class="p-2 link-secondary" href="/Title/Teknoloji"><h4>Teknoloji</h4></a>
+          <a class="p-2 link-secondary" href="/Title/Yazarlarimiz"><h4>Yazarlarımız</h4></a>
         </nav>
       </div>
-            <form class="col-3">
-            <div class="form-group">
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Şifre">
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Beni Hatırla</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Giriş</button>
-            </form>
+    </div>
+
+      @if(TempData["Error"] != null)
+            {
+                <div class="alert alert-danger col-md-12">
+                    <p><strong>Hata!</strong> @TempData["Error"]</p>
+                </div>
+            }
+            <form asp-action="Login">
+                    <div class="form-group">
+                        <label class="control-label" asp-for="EmailAddress"></label>
+                        <input class="form-control" asp-for="EmailAddress" />
+                        <span class="text-danger" asp-validation-for="EmailAddress"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" asp-for="Password"></label>
+                        <input class="form-control" asp-for="Password" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group">                        
+                        <button class="btn btn-primary" type="submit">Giriş</button>
+                    </div>
+                </form>
       
   
