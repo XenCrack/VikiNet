@@ -7,9 +7,9 @@ namespace VikiNet.Data.ViewModels
     {
         public SubjectDropdownViewModel()
         {
-            Subjects = new List<Subject>();
+            SubjectTypes = new List<SubjectType>();
         }
 
-        public List<Subject> Subjects { get; set; }
+        public List<SubjectType> SubjectTypes { get; set; }
     }
 }

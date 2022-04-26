@@ -238,8 +238,13 @@ namespace VikiNet.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime")
-                        .HasColumnName("createddate");
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -247,23 +252,14 @@ namespace VikiNet.Migrations
                     b.Property<bool?>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime")
-                        .HasColumnName("modifieddate");
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ModifyDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("Name");
-
-                    b.Property<string>("SubjectName")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("SubjectName");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SubjectTypeId")
                         .HasColumnType("int");
@@ -297,11 +293,8 @@ namespace VikiNet.Migrations
                     b.Property<DateTime?>("ModifyDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SubjectTypeName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("SubjectType");
+                    b.Property<string>("SubjectName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");

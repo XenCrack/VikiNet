@@ -20,11 +20,16 @@
           <!-- ----------Başlık kısmı---------- -->
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="/Title/Tarih"><h4>Tarih</h4></a>
-          <a class="p-2 link-secondary" href="/Title/Din"><h4>Din</h4></a>
-          <a class="p-2 link-secondary" href="/Title/Edebiyat"><h4>Edebiyat</h4></a>
-          <a class="p-2 link-secondary" href="/Title/Teknoloji"><h4>Teknoloji</h4></a>
-          <a class="p-2 link-secondary" href="/Title/Yazarlarimiz"><h4>Yazarlarımız</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Tarih</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Din</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Edebiyat</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Teknoloji</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Yazarlarımız</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
+          @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
+          {
+          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
+          } 
         </nav>
       </div>
     </div>

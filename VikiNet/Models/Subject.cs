@@ -10,30 +10,21 @@ namespace VikiNet.Models
     {
         
 
-        [Required(ErrorMessage ="Konu başlığı boş bırakılamaz")]
-        [Column("Name", TypeName = "varchar(50)")]
-        [StringLength(50)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Konu başlığı boş bırakılamaz")]
-        [Column("SubjectName", TypeName = "text")]
-        
-        public string SubjectName { get; set; }
+        public string Description { get; set; }
 
-        [Required]
-        [Column("createddate", TypeName = "datetime")]
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public string ImageUrl { get; set; }
 
-        [Column("modifieddate", TypeName = "datetime")]
-        public DateTime? ModifiedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime ModifiedDate { get; set; }
 
         public int SubjectTypeId { get; set; }
 
         [ForeignKey(nameof(SubjectTypeId))]
         public SubjectType SubjectType { get; set; }
 
-
-
-
+        
     }
 }

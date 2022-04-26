@@ -38,6 +38,7 @@ namespace VikiNet
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
+                
                 .AddDefaultTokenProviders()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<VikiNetDbContext>();
@@ -52,9 +53,9 @@ namespace VikiNet
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
-            
-            
-                
+
+
+
 
             services.AddSession(option =>
             {

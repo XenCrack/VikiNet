@@ -23,13 +23,15 @@ namespace VikiNet.Data.Concrete
             var subject = new Subject()
             {
                 Name = model.Name,
-                SubjectName = model.SubjectName,
-                CreatedDate = model.CreatedDate,
-                ModifiedDate = model.ModifiedDate
+                Description = model.Description,
+                CreateDate = model.CreatedDate,
+                SubjectTypeId = model.TypeId,
+                ModifiedDate = model.ModifiedDate,
+                ImageUrl = model.ImageUrl
+            
             };
             await _context.Subject.AddAsync(subject);
             await _context.SaveChangesAsync();
-
         }
 
         public async Task<Subject> GetSubjectByIdAsync(int id)
@@ -37,8 +39,8 @@ namespace VikiNet.Data.Concrete
             var result = await
                 _context
                 .Subject
-                .Include(st => st.SubjectName)
-                .FirstOrDefaultAsync(x => x.Id == id);
+                .Include(s=> s.SubjectType)
+                .FirstOrDefaultAsync( x => x.Id == id);
 
             return result;
         }
@@ -47,25 +49,30 @@ namespace VikiNet.Data.Concrete
         {
             var response = new SubjectDropdownViewModel()
             {
-                Subjects = await _context.Subject.OrderBy(x => x.SubjectType).ToListAsync()
+                SubjectTypes = await _context.SubjectType.OrderBy(x => x.SubjectName).ToListAsync()
             };
             return response;
         }
 
         public async Task UpdateAsync(SubjectViewModel model)
         {
-            var subject = await _context.Subject.FirstOrDefaultAsync(x => x.Id == model.Id);
+            var subject = await (from s in _context.Subject where s.Id == model.Id select s).FirstOrDefaultAsync();
 
-            if (subject != null)
+            if(subject == null)
             {
                 subject.Name = model.Name;
-                subject.SubjectName = model.SubjectName;
-                subject.CreatedDate = model.CreatedDate;
+                subject.Description = model.Description;
+                subject.CreateDate = model.CreatedDate;
+                subject.SubjectTypeId = model.TypeId;
                 subject.ModifiedDate = model.ModifiedDate;
+                subject.ImageUrl = model.ImageUrl;
 
                 await _context.SaveChangesAsync();
             }
+
         }
+
+       
 
 
     }

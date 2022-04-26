@@ -1,63 +1,71 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Threading.Tasks;
 using VikiNet.Data.Abstract;
 using VikiNet.Data.ViewModels;
+using VikiNet.Models;
 
 namespace VikiNet.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+
+    
     public class SubjectController : Controller
     {
-        private readonly ISubjectService _service;
+        private readonly ISubjectService _subjectService;
 
-        public SubjectController(ISubjectService service)
+        public SubjectController(ISubjectService subjectService)
         {
-            _service = service;
+            _subjectService = subjectService;
         }
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var subject = await _service.GetAllAsync(n => n.SubjectType);
-        
+            var subject = await _subjectService.GetAllAsync();
+            return View(subject);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Name, Description")]Subject model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            
+            await _subjectService.AddAsync(model);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var subject = await _subjectService.GetByIdAsync(id);
+
+            if (subject == null) return NotFound();
+
             return View(subject);
         }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> Create()
-        {
-            var dropdown = await _service.GetSubjectDropdownValues();
-
-            ViewBag.Subjects = new SelectList(dropdown.Subjects, "Id", "Name");
-
-            return View();
-        
-        }
-
         [HttpPost]
-        public async Task<IActionResult> Create(SubjectViewModel model)
+        public async Task<IActionResult> Edit(Subject model)
         {
-            if(!ModelState.IsValid)
-            {
-                var dropdown = await _service.GetSubjectDropdownValues();
+            model.ModifyDate = DateTime.Now;
+            await _subjectService.UpdateAsync(model.Id, model);
 
-                ViewBag.Subjects = new SelectList(dropdown.Subjects, "Id", "Name");
-                
-                return View(model);
-            }
-
-            await _service.AddAsync(model);
             return RedirectToAction("Index");
+
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Detail(int id)
         {
-            var subjectDetail = await _service.GetSubjectByIdAsync(id);
+            var subject = await _subjectService.GetByIdAsync(id);
 
-            return View(subjectDetail);
+            if (subject == null) return NotFound();
+
+            return View(subject);
         }
-
     }
 }

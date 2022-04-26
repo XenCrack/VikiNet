@@ -8,21 +8,34 @@ namespace VikiNet.Data.ViewModels
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Konu başlığı boş bırakılamaz")]
-        [Column("Name", TypeName = "varchar(50)")]
-        [StringLength(50)]
+        [Display(Name = "Başlık")]
+        [Required(ErrorMessage = "Başlık boş geçilemez")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Konu başlığı boş bırakılamaz")]
-        [Column("SubjectName", TypeName = "text")]
+        [Display(Name ="Açıklama")]
+        [Required(ErrorMessage = "Açıklama boş geçilemez")]
+        public string Description { get; set; }
 
-        public string SubjectName { get; set; }
+        [Display(Name = "Afiş")]
+        public string ImageUrl { get; set; }
 
-        [Required]
-        [Column("createddate", TypeName = "datetime")]
+        [Display(Name ="Konu Türü")]
+        [Required(ErrorMessage ="Tür seçmelisiniz")]
+        public int TypeId { get; set; }
+
+        [Display(Name ="Oluşturulma Tarihi")]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-        [Column("modifieddate", TypeName = "datetime")]
-        public DateTime? ModifiedDate { get; set; }
+        [Display(Name ="Değiştirilme Tarihi")]
+        public DateTime ModifiedDate { get; set; } = DateTime.Now;
+
+        
+        
     }
 }
+
+
+
+
+
+

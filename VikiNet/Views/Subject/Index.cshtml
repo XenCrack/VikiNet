@@ -20,25 +20,26 @@
             <!-- ----------Başlık kısmı---------- -->
         <div class="nav-scroller py-1 mb-2">
           <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="#"><h4>Tarih</h4></a>
-            <a class="p-2 link-secondary" href="#"><h4>Din</h4></a>
-            <a class="p-2 link-secondary" href="#"><h4>Edebiyat</h4></a>
-            <a class="p-2 link-secondary" href="#"><h4>Teknoloji</h4></a>
-            <a class="p-2 link-secondary" href="#"><h4>Yazarlarımız</h4></a>
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.Identity.IsAuthenticated && User.IsInRole("User"))
-            {
-                <a class="p-2 link-secondary" asp-action="Add" href="/Subject/Add"><h4>Makale Ekle</h4></a>
-            }
-          </nav>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Tarih</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Din</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Edebiyat</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Teknoloji</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Yazarlarımız</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
+          @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
+          {
+          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
+          } 
+        </nav>
           <hr />
         </div>
       </div>
         <main class="container">
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-          <div class="col-md-6 px-0">
+          @*<div class="col-md-6 px-0">
             <h1 class="display-6 fst-italic">Yalan içermeyen tarih kitapları son derece sıkıcıdır.<br>-Anatole France   </h1>
             <img style="width: 350px; margin-left: 600px; margin-top: -170px; position: relative; border-radius: 80px;" src="https://1.bp.blogspot.com/-Pc-cEHwMlU0/UggIR2xT0NI/AAAAAAAADYc/lCviVkVpDzw/s1600/albums_20845.jpg" alt="">
-          </div>
+          </div>*@
         </div>
       </main>
         @foreach(var item in Model)
@@ -48,7 +49,7 @@
                         <div class="col-sm">
                             <p><h4>@item.SubjectType</h4></p>
                             <p><h2>@item.Name</h2></p>
-                        <p>@item.SubjectName</p>
+                        <p>@item.Description</p>
                         <p>@item.CreatedDate</p>
                         <p>@item.ModifiedDate</p>
                         </div>

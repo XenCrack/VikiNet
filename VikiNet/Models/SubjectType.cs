@@ -10,17 +10,9 @@ namespace VikiNet.Models
     {
         
         
-        [Required]
-        [Column("SubjectType", TypeName = "varchar(50)")]
-        [StringLength(50)]
-        public string SubjectTypeName{ get; set; }
+        public string SubjectName { get; set; }
 
         public List<Subject> Subjects { get; set; }
-
-        
-
-        
-
 
     }
 }

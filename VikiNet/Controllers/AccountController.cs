@@ -10,7 +10,7 @@ namespace VikiNet.Controllers
     public class AccountController : Controller
     {
 
-        private readonly VikiNetDbContext _vikiNetDbContext;
+        private readonly VikiNetDbContext _applicationDbContext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
@@ -19,7 +19,7 @@ namespace VikiNet.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager)
         {
-            _vikiNetDbContext = applicationDbContext;
+            _applicationDbContext = applicationDbContext;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -46,7 +46,7 @@ namespace VikiNet.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Subject");
                     }
                 }
 
@@ -59,7 +59,7 @@ namespace VikiNet.Controllers
 
             return View(model);
         }
-        
+
         public IActionResult Register() => View(new RegisterViewModel());
 
         [HttpPost]
