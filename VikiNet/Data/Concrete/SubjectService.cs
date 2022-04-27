@@ -6,6 +6,7 @@ using VikiNet.Data.ViewModels;
 using VikiNet.Entity;
 using VikiNet.Models;
 using VikiNet.Data.Abstract;
+using System;
 
 namespace VikiNet.Data.Concrete
 {
@@ -24,11 +25,9 @@ namespace VikiNet.Data.Concrete
             {
                 Name = model.Name,
                 Description = model.Description,
-                CreateDate = model.CreatedDate,
-                SubjectTypeId = model.TypeId,
+                CreateDate = model.CreatedDate = DateTime.Now,
                 ModifiedDate = model.ModifiedDate,
                 ImageUrl = model.ImageUrl
-            
             };
             await _context.Subject.AddAsync(subject);
             await _context.SaveChangesAsync();
@@ -39,7 +38,7 @@ namespace VikiNet.Data.Concrete
             var result = await
                 _context
                 .Subject
-                .Include(s=> s.SubjectType)
+                .Include(s=> s.Id)
                 .FirstOrDefaultAsync( x => x.Id == id);
 
             return result;
@@ -63,7 +62,6 @@ namespace VikiNet.Data.Concrete
                 subject.Name = model.Name;
                 subject.Description = model.Description;
                 subject.CreateDate = model.CreatedDate;
-                subject.SubjectTypeId = model.TypeId;
                 subject.ModifiedDate = model.ModifiedDate;
                 subject.ImageUrl = model.ImageUrl;
 

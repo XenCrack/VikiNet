@@ -90,7 +90,7 @@ namespace VikiNet.Controllers
                 await _userManager.AddToRoleAsync(newUser, "User");
             }
 
-            return View();
+            return View("Index","Subject");
         }
 
         public async Task<IActionResult> Logout()

@@ -20,12 +20,9 @@
             <!-- ----------Başlık kısmı---------- -->
         <div class="nav-scroller py-1 mb-2">
           <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Tarih</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Din</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Edebiyat</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Teknoloji</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Yazarlarımız</h4></a>
           <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Makaleler</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
           @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
           {
           <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
@@ -36,10 +33,10 @@
       </div>
         <main class="container">
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-          @*<div class="col-md-6 px-0">
+          <div class="col-md-6 px-0">
             <h1 class="display-6 fst-italic">Yalan içermeyen tarih kitapları son derece sıkıcıdır.<br>-Anatole France   </h1>
-            <img style="width: 350px; margin-left: 600px; margin-top: -170px; position: relative; border-radius: 80px;" src="https://1.bp.blogspot.com/-Pc-cEHwMlU0/UggIR2xT0NI/AAAAAAAADYc/lCviVkVpDzw/s1600/albums_20845.jpg" alt="">
-          </div>*@
+            <img style="width: 350px; margin-left: 600px; margin-top: -220px; position: relative; border-radius: 80px;" src="https://1.bp.blogspot.com/-Pc-cEHwMlU0/UggIR2xT0NI/AAAAAAAADYc/lCviVkVpDzw/s1600/albums_20845.jpg" alt="">
+          </div>
         </div>
       </main>
         @foreach(var item in Model)
@@ -47,14 +44,21 @@
             <div class="container">
                     <div class="row">
                         <div class="col-sm">
-                            <p><h4>@item.SubjectType</h4></p>
-                            <p><h2>@item.Name</h2></p>
-                        <p>@item.Description</p>
+                            <p><h2> Konu: @item.Name</h2></p>
+                            <p><h2>Açıklama</h2></p>
+                            <hr>
+                        <p> @item.Description</p>
+                        <hr>
+                        <p>Eklenme Tarihi</p>
+                        
                         <p>@item.CreatedDate</p>
-                        <p>@item.ModifiedDate</p>
+                        <hr>
+                        <img class="card-img-top" src="@item.ImageUrl" alt="">
+                        
                         </div>
                     </div>
             </div>
         }
+        
 
              

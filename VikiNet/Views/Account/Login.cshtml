@@ -20,19 +20,17 @@
       </header>
           
       <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Tarih</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Din</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Edebiyat</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Teknoloji</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Yazarlarımız</h4></a>
+          <nav class="nav d-flex justify-content-between">
           <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Makaleler</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
           @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
           {
           <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
           } 
         </nav>
-      </div>
+          <hr />
+        </div>
     </div>
 
       @if(TempData["Error"] != null)
@@ -49,7 +47,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label" asp-for="Password"></label>
-                        <input class="form-control" asp-for="Password" />
+                        <input type="password" class="form-control" asp-for="Password" />
                         <span class="text-danger" asp-validation-for="Password"></span>
                     </div>
                     <div class="form-group">                        

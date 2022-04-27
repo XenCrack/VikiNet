@@ -6,6 +6,7 @@
 
 
 
+
     <div class="container">
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
@@ -13,7 +14,7 @@
                     <a class="link-secondary" href="#"></a>
                 </div>
                 <div class="col-4 text-center">
-                    <a class="blog-header-logo text-dark" href="#"> <h1> <strong>VikiNet</strong></h1></a>
+                    <a class="blog-header-logo text-dark" href="/Home/Index"> <h1> <strong>VikiNet</strong></h1></a>
                 </div>
                 <div class="col-2 d-flex justify-content-end align-items-center">
                     <a class="btn btn-sm btn-outline-secondary" href="/Account/Login">Giriş Yap</a>
@@ -25,21 +26,19 @@
         </header>
 
         <div class="nav-scroller py-1 mb-2">
-           <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Tarih</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Din</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Edebiyat</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Teknoloji</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Yazarlarımız</h4></a>
+          <nav class="nav d-flex justify-content-between">
           <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Makaleler</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
           @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
           {
           <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
           } 
         </nav>
+          <hr />
         </div>
     </div>
-    <hr />
+    
 
     <div class="container">
         <div class="row">

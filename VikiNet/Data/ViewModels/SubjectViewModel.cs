@@ -19,10 +19,6 @@ namespace VikiNet.Data.ViewModels
         [Display(Name = "Afiş")]
         public string ImageUrl { get; set; }
 
-        [Display(Name ="Konu Türü")]
-        [Required(ErrorMessage ="Tür seçmelisiniz")]
-        public int TypeId { get; set; }
-
         [Display(Name ="Oluşturulma Tarihi")]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 

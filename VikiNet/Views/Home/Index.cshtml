@@ -19,19 +19,17 @@
       </header>
           <!-- ----------Başlık kısmı---------- -->
       <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Tarih</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Din</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Edebiyat</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Teknoloji</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Yazarlarımız</h4></a>
+          <nav class="nav d-flex justify-content-between">
           <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Index"><h4>Makaleler</h4></a>
+          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
           @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
           {
           <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
           } 
         </nav>
-      </div>
+          <hr />
+        </div>
     </div>
     
     <main class="container">
@@ -39,7 +37,7 @@
         <div class="col-md-6 px-0">
           <h1 class="display-6 fst-italic">Herkes dünyayı değiştirmeyi düşünür, ama kimse kendini değiştirmeyi düşünmez.<br>-Lev Tolstoy   </h1>
           <img style="width: 350px; margin-left: 600px; margin-top: -250px; position: relative; border-radius: 80px;" src="https://img-s1.onedio.com/id-6165f6191f044aac229db8dc/rev-0/w-620/f-jpg/s-165a2fa678621396fd51397460c107b5bb460230.jpg" alt="">
-          <p class="lead mb-0"><a href="#" class="text-white fw-bold">Öğrenmeye veya katkıda bulunmaya başla...</a></p>
+          <p class="lead mb-0"><a href="/Account/Register" class="text-white fw-bold">Hemen Kayıt ol <br />Öğrenmeye veya katkıda bulunmaya başla...</a></p>
         </div>
       </div>
     

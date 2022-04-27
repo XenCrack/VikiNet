@@ -10,7 +10,7 @@ using VikiNet.Entity;
 namespace VikiNet.Migrations
 {
     [DbContext(typeof(VikiNetDbContext))]
-    [Migration("20220426175800_lastadded")]
+    [Migration("20220427212018_lastadded")]
     partial class lastadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,15 +263,10 @@ namespace VikiNet.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SubjectTypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SubjectTypeId");
 
                     b.ToTable("Subject");
                 });
@@ -296,6 +291,7 @@ namespace VikiNet.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SubjectName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -355,22 +351,6 @@ namespace VikiNet.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("VikiNet.Models.Subject", b =>
-                {
-                    b.HasOne("VikiNet.Models.SubjectType", "SubjectType")
-                        .WithMany("Subjects")
-                        .HasForeignKey("SubjectTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SubjectType");
-                });
-
-            modelBuilder.Entity("VikiNet.Models.SubjectType", b =>
-                {
-                    b.Navigation("Subjects");
                 });
 #pragma warning restore 612, 618
         }

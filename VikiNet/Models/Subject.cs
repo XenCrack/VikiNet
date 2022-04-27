@@ -20,10 +20,9 @@ namespace VikiNet.Models
 
         public DateTime ModifiedDate { get; set; }
 
-        public int SubjectTypeId { get; set; }
+        
 
-        [ForeignKey(nameof(SubjectTypeId))]
-        public SubjectType SubjectType { get; set; }
+        
 
         
     }
