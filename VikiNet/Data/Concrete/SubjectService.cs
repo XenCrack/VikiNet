@@ -57,7 +57,7 @@ namespace VikiNet.Data.Concrete
         {
             var subject = await (from s in _context.Subject where s.Id == model.Id select s).FirstOrDefaultAsync();
 
-            if(subject == null)
+            if(subject != null)
             {
                 subject.Name = model.Name;
                 subject.Description = model.Description;

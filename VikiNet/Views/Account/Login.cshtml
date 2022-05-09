@@ -23,11 +23,6 @@
           <nav class="nav d-flex justify-content-between">
           <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
           <a class="p-2 link-secondary" href="/Subject/Index"><h4>Makaleler</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
-          @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
-          {
-          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
-          } 
         </nav>
           <hr />
         </div>

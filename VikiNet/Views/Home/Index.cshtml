@@ -9,12 +9,22 @@
           <div class="col-4 text-center">
             <a class="blog-header-logo text-dark" href="/Home/Index"> <h1> <strong>VikiNet</strong></h1></a>
           </div>
-          <div class="col-2 d-flex justify-content-end align-items-center">
-            <a class="btn btn-sm btn-outline-secondary" href="/Account/Login">Giriş Yap</a>
-          </div>
-          <div class="col-l-2 d-flex justify-content-end align-items-center">
-            <a class="btn btn-sm btn-outline-secondary" href="/Account/Register">Kayıt Ol</a>
-          </div>
+          
+                @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <div class="col-l-2 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Logout">Çıkış Yap</a>
+                    </div>
+                }else
+                {
+                    <div class="col-2 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-sm btn-outline-secondary" href="/Account/Login">Giriş Yap</a>
+                    </div>
+                    <div class="col-l-2 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-sm btn-outline-secondary" href="/Account/Register">Kayıt Ol</a>
+                    </div>
+                }
+            
         </div>
       </header>
           <!-- ----------Başlık kısmı---------- -->
@@ -22,16 +32,10 @@
           <nav class="nav d-flex justify-content-between">
           <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
           <a class="p-2 link-secondary" href="/Subject/Index"><h4>Makaleler</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
-          @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
-          {
-          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
-          } 
         </nav>
           <hr />
         </div>
     </div>
-    
     <main class="container">
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
@@ -40,7 +44,6 @@
           <p class="lead mb-0"><a href="/Account/Register" class="text-white fw-bold">Hemen Kayıt ol <br />Öğrenmeye veya katkıda bulunmaya başla...</a></p>
         </div>
       </div>
-    
         <div class="row g-5">
             <div class="col-md-8">
                 <h2 class="blog-post-title">Blog Hakkında</h2>

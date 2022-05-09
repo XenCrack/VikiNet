@@ -38,7 +38,7 @@ namespace VikiNet.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+        
         public async Task<IActionResult> Edit(int id)
         {
             var subject = await _subjectService.GetByIdAsync(id);

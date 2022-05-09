@@ -1,39 +1,40 @@
 ﻿@using VikiNet.Data.ViewModels
 @model SubjectViewModel
 
-    <div class="container">
+<div class="container">
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
                     <a class="link-secondary" href="#"></a>
                 </div>
                 <div class="col-4 text-center">
-                    <a class="blog-header-logo text-dark" href="#"> <h1> <strong>VikiNet</strong></h1></a>
+                    <a class="blog-header-logo text-dark" href="/Home/Index"> <h1> <strong>VikiNet</strong></h1></a>
                 </div>
-                <div class="col-2 d-flex justify-content-end align-items-center">
+                @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <div class="col-l-2 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Logout">Çıkış Yap</a>
+                    </div>
+                }else
+                {
+                    <div class="col-2 d-flex justify-content-end align-items-center">
                     <a class="btn btn-sm btn-outline-secondary" href="/Account/Login">Giriş Yap</a>
-                </div>
-                <div class="col-l-2 d-flex justify-content-end align-items-center">
+                    </div>
+                    <div class="col-l-2 d-flex justify-content-end align-items-center">
                     <a class="btn btn-sm btn-outline-secondary" href="/Account/Register">Kayıt Ol</a>
-                </div>
+                    </div>
+                }
             </div>
         </header>
-
         <div class="nav-scroller py-1 mb-2">
           <nav class="nav d-flex justify-content-between">
           <a class="p-2 link-secondary" href="/Subject/Create"><h4>Makale Ekle</h4></a>
           <a class="p-2 link-secondary" href="/Subject/Index"><h4>Makaleler</h4></a>
-          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
-          @if(User.Identity.IsAuthenticated && User.IsInRole("User"))
-          {
-          <a class="p-2 link-secondary" href="/Subject/Edit"><h4>Makale Düzenle</h4></a>
-          } 
         </nav>
           <hr />
         </div>
     </div>
-    
-     <div class="container">
+    <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <form asp-action="Edit" enctype="multipart/form-data">
@@ -54,10 +55,13 @@
               </div>
               <div>
                 <button class="btn btn-primary" type="submit">Kaydet</button>
-              </div>
+            </div>
             </form>
           </div> 
         </div>
       </div>
     
-      
+
+      @section Scripts {    
+    <partial name="_ValidationScriptsPartial">    
+}
